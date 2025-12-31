@@ -2,11 +2,11 @@
 
 A time series forecasting project for predicting daily store sales using CatBoost regression with advanced feature engineering and temporal analysis.
 
-## 📋 Overview
+## Overview
 
 This project implements a machine learning pipeline to forecast sales across multiple retail stores. It leverages historical sales data, promotional information, and store characteristics to predict future sales with high accuracy. The model uses gradient boosting (CatBoost) combined with sophisticated time series feature engineering.
 
-## ✨ Features
+## Features
 
 - **Comprehensive Data Processing**
   - Automatic handling of missing dates and store closures
@@ -33,13 +33,13 @@ This project implements a machine learning pipeline to forecast sales across mul
   - Comparison with lag-7, lag-1, and lag-14 naive forecasts
   - Per-store error analysis
 
-## 🛠️ Installation
+## Installation
 
 ```bash
 pip install pandas numpy catboost icecream matplotlib seaborn statsmodels scikit-learn
 ```
 
-## 📊 Data Structure
+## Data Structure
 
 The project expects three CSV files in the `data/` directory:
 
@@ -52,7 +52,7 @@ The project expects three CSV files in the `data/` directory:
 3. **stores.csv** - Store characteristics
    - Store, Assortment, CompetitionDistance, PromoSinceWeek, PromoSinceYear, PromoInterval
 
-## 🚀 Usage
+## Usage
 
 ### Running the Main Script
 
@@ -79,7 +79,7 @@ The notebook provides an interactive environment for:
 - Model training and evaluation
 - Hyperparameter tuning experiments
 
-## 🔍 Model Architecture
+## Model Architecture
 
 ### CatBoost Regressor Configuration
 
@@ -107,7 +107,7 @@ The notebook provides an interactive environment for:
 - **Store Characteristics**: assortment_code, CompetitionDistance
 - **Seasonality**: Fourier transform features (sin/cos)
 
-## 📈 Results
+## Results
 
 ### Model Performance (Validation Set)
 
@@ -122,7 +122,7 @@ The model achieves **76.7% improvement** in RMSE over the lag-7 baseline and **7
 
 RMSE varies by store characteristics, ranging from ~370 to ~960 across different store types.
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 store_sales_forecasting/
@@ -143,7 +143,7 @@ store_sales_forecasting/
     └── daily_promo_active_mean.png
 ```
 
-## 🔬 Technical Highlights
+## Technical Highlights
 
 1. **Log Transformation**: Stabilizes variance and reduces heteroskedasticity in sales data
 2. **ARCH Testing**: Validates presence/absence of conditional heteroskedasticity in residuals
@@ -151,7 +151,7 @@ store_sales_forecasting/
 4. **Missing Data Strategy**: Strategic filling using forward-fill for store IDs and maximum values for competition distance
 5. **Train/Validation Split**: 90/10 split based on temporal ordering
 
-## 🎯 Future Improvements
+## Future Improvements
 
 - [ ] Implement cross-validation with time-based folds
 - [ ] Add external features (weather, holidays, economic indicators)
@@ -160,21 +160,10 @@ store_sales_forecasting/
 - [ ] Add confidence intervals for predictions
 - [ ] Create interactive dashboard for predictions
 
-## 📝 Notes
+## Notes
 
 - The model uses GPU acceleration when available (set `task_type="GPU"` in main.py)
 - Early stopping is implemented with 200-iteration patience
 - All lag features are back-filled to avoid look-ahead bias
 - The empty_store_flag tracks store closure periods
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## 📄 License
-
-This project is open source and available under the MIT License.
-
----
-
 **Note**: Make sure your GPU drivers and CUDA are properly installed if you want to use GPU acceleration for faster training.
